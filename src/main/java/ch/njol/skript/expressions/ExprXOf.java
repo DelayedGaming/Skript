@@ -43,7 +43,7 @@ import org.eclipse.jdt.annotation.Nullable;
 public class ExprXOf extends PropertyExpression<Object, Object> {
 
 	static {
-		Skript.registerExpression(ExprXOf.class, Object.class, ExpressionType.PATTERN_MATCHES_EVERYTHING, "%number% of %itemstacks/itemtypes/entitytype%");
+		Skript.registerExpression(ExprXOf.class, Object.class, ExpressionType.PATTERN_MATCHES_EVERYTHING, "%number% of %itemstacks/itemtypes/entitytype/slots%");
 	}
 
 	@SuppressWarnings("NotNullFieldNotInitialized")
@@ -65,6 +65,8 @@ public class ExprXOf extends PropertyExpression<Object, Object> {
 			return new Object[0];
 
 		return get(source, o -> {
+			if (o instanceof Slot)
+				o = ((Slot) o).getItem();
 			if (o instanceof ItemStack) {
 				ItemStack is = ((ItemStack) o).clone();
 				is.setAmount(a.intValue());
