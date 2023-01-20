@@ -73,7 +73,7 @@ public class ExprXOf extends PropertyExpression<Object, Object> {
 				} catch (Exception ex) {
 					Skript.info("slot method fail");
 					try {
-						return new ItemType(((Slot) o).getItem())
+						return new ItemType(((Slot) o).getItem());
 					} catch (Exception ex) {
 						Skript.info("itemtype method fail");
 						return new Object[0];
