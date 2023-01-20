@@ -68,9 +68,17 @@ public class ExprXOf extends PropertyExpression<Object, Object> {
 
 		return get(source, o -> {
 			if (o instanceof Slot) {
-				ItemStack is = ((Slot) o).getItem().clone();
-				is.setAmount(a.intValue());
-				return is;
+				try {
+					return new Slot[0];
+				} catch (Exception ex) {
+					Skript.info("slot method fail");
+					try {
+						return new ItemType(((Slot) o).getItem())
+					} catch (Exception ex) {
+						Skript.info("itemtype method fail");
+						return new Object[0];
+					}
+				}
 			} else if (o instanceof ItemStack) {
 				ItemStack is = ((ItemStack) o).clone();
 				is.setAmount(a.intValue());
@@ -94,7 +102,7 @@ public class ExprXOf extends PropertyExpression<Object, Object> {
 		if (CollectionUtils.containsSuperclass(to, getReturnType()))
 			return (Expression<? extends R>) this;
 
-		if (!CollectionUtils.containsAnySuperclass(to, ItemStack.class, ItemType.class, EntityType.class))
+		if (!CollectionUtils.containsAnySuperclass(to, ItemStack.class, ItemType.class, EntityType.class, Slot.class))
 			return null;
 
 		Expression<? extends R> converted = getExpr().getConvertedExpression(to);
