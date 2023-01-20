@@ -33,6 +33,7 @@ import ch.njol.skript.lang.SkriptParser.ParseResult;
 import ch.njol.skript.util.slot.Slot;
 import ch.njol.util.Kleenean;
 import ch.njol.util.coll.CollectionUtils;
+import java.lang.Object;
 import org.bukkit.event.Event;
 import org.bukkit.inventory.ItemStack;
 import org.eclipse.jdt.annotation.Nullable;
@@ -67,7 +68,7 @@ public class ExprXOf extends PropertyExpression<Object, Object> {
 
 		return get(source, o -> {
 			if (o instanceof Slot)
-				o = ((Slot) o).getItem();
+				o = (Object) ((Slot) o).getItem();
 			if (o instanceof ItemStack) {
 				ItemStack is = ((ItemStack) o).clone();
 				is.setAmount(a.intValue());
