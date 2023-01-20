@@ -33,6 +33,7 @@ import ch.njol.skript.lang.SkriptParser.ParseResult;
 import ch.njol.skript.util.slot.Slot;
 import ch.njol.util.Kleenean;
 import ch.njol.util.coll.CollectionUtils;
+import java.lang.Exception;
 import java.lang.Object;
 import org.bukkit.event.Event;
 import org.bukkit.inventory.ItemStack;
