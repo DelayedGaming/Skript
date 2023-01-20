@@ -67,9 +67,11 @@ public class ExprXOf extends PropertyExpression<Object, Object> {
 			return new Object[0];
 
 		return get(source, o -> {
-			if (o instanceof Slot)
-				o = (Object) ((Slot) o).getItem();
-			if (o instanceof ItemStack) {
+			if (o instanceof Slot) {
+				ItemStack is = ((Slot) o).getItem().clone();
+				is.setAmount(a.intValue());
+				return is;
+			} else if (o instanceof ItemStack) {
 				ItemStack is = ((ItemStack) o).clone();
 				is.setAmount(a.intValue());
 				return is;
