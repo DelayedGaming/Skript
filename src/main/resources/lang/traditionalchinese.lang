@@ -8,7 +8,7 @@ none: <none>
 
 # — Skript —
 skript:
-	copyright: ~ 由 © Peter Güttinger 也称为 Njol 制作~
+	copyright: ~ 由 & © Peter Güttinger 也称为 Njol 制作~
 	prefix: <gray>[<gold>Skript<gray>] <reset>
 	quotes error: 無效的引號使用（”）。如果你想在”引號文本”中使用引號，雙寫它們（””）。
 	brackets error: 括號的數量或位置無效。請確保每一個左括號都有一個相應的右括號。
